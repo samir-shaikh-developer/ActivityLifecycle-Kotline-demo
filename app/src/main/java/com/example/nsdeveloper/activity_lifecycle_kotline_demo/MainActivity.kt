@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
         show = findViewById(R.id.show)
     }
 
+//    this method is called when activity has some data to restore
     override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
         show.text = savedInstanceState?.getString("KEY")
         Toast.makeText(this,"On Restart",Toast.LENGTH_SHORT).show()
@@ -58,6 +59,8 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    //Use onStop insted of onPause to relase resources save or perfrom time consuming
+    // operation because onPause callback is called for a quick time
     override fun onStop() {
         super.onStop()
         Toast.makeText(this,"On Stop",Toast.LENGTH_SHORT).show()
